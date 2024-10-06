@@ -1,0 +1,80 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e9ecef; /* Light gray background */
+    color: #343a40; /* Dark gray text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px; /* Add some padding to the body */
+}
+
+h1 {
+    font-size: 2rem; /* Larger font size */
+    margin-bottom: 10px; /* Space below the heading */
+    color: #495057; /* Slightly lighter color for headings */
+}
+
+div.container {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap; /* Allow wrapping for better responsiveness */
+}
+
+.create, .learn, .delete {
+    background-color: #ffffff; /* White background for cards */
+    border: 1px solid #ced4da; /* Light gray border */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    width: 300px; /* Fixed width for cards */
+    margin: 10px; /* Space between cards */
+}
+
+input {
+    border: 1px solid #ced4da; /* Light gray border */
+    border-radius: 5px;
+    margin: 10px 0; /* Space above and below inputs */
+    padding: 10px;
+    font-size: 1rem; /* Ensure input text is readable */
+    width: calc(100% - 22px); /* Full width accounting for padding */
+}
+
+button {
+    margin: 10px 0; /* Space above and below buttons */
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+h2 {
+    font-size: 1.5rem; /* Slightly larger font for display */
+    margin: 10px 0; /* Space above and below */
+    color: #495057; /* Consistent heading color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    div.container {
+        flex-direction: column; /* Stack cards on smaller screens */
+        align-items: center; /* Center align items */
+    }
+}
