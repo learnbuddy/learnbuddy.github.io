@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnBuddy</title>
+    <link rel="stylesheet" href="learnstyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="create">
+            <h1>Create Carts</h1>
+            <p>Type in your cards name</p>
+            <input type="text" id="question" placeholder='"Whats 16²?"'>
+            <p>Type in your cards solution</p>
+            <input type="text" id="solution" placeholder='"16² is 256"'> <br>
+            <button onclick="SaveCard()">Save</button>
+        </div>
+    
+        <div class="learn">
+            <h1>Learn</h1>
+            <p>Click to learn a random one</p>
+            <button onclick="NextCard()">Next</button>
+            <button onclick="ShowSolution()">Solution</button>
+            <h2 id="card_display"></h2>
+            <h2 id="card_display_solution"></h2>
+        </div>
+
+        <div class="delete">
+            <h1>Delete Cards</h1>
+            <button onclick="DeleteAll()">Delete All</button>
+            <button onclick="DeleteSpecific()">Delete Specific</button> <br>
+            <input type="text" name="" id="specific_delete" placeholder="Input cards name to delete">
+            <a href="cards.html">View all cards</a>
+        </div>
+    </div>
+</body>
+
+<script>
+    let randomCardSolution;
+
+    function SaveCard() {
+        var CardName = document.getElementById('question').value;
+        var CardSolutuion = document.getElementById('solution').value;
+
+        localStorage.setItem(CardName, CardSolutuion);
+
+        document.getElementById('question').value = '';
+        document.getElementById('solution').value = '';
+    }
+
+    function NextCard() {
+        var Cards = Object.keys(localStorage);
+        const card_display = document.getElementById('card_display');
+        const card_display_solution = document.getElementById('card_display_solution');
+
+        if (Cards.length > 0) {
+            var randomIndex = Math.floor(Math.random() * Cards.length);
+            var randomCard = Cards[randomIndex];
+            randomCardSolution = localStorage.getItem(randomCard);
+
+            card_display.innerHTML = randomCard;
+        } else {
+            card_display.innerHTML = "No card found :("
+        }
+
+        document.getElementById('card_display_solution').innerHTML = '';
+    }
+
+    function ShowSolution() {
+        var card_display_solution = document.getElementById('card_display_solution')
+
+        if (randomCardSolution) {
+        card_display_solution.innerHTML = randomCardSolution;
+        } else {
+            card_display_solution.innerHTML = "No solution available :(";
+        }
+    }
+
+    function DeleteAll() {
+        localStorage.clear();
+    }
+
+    function DeleteSpecific() {
+        var card_to_delete = document.getElementById('specific_delete').value;
+
+        localStorage.removeItem(card_to_delete);
+    }
+</script>
+
+</html>
