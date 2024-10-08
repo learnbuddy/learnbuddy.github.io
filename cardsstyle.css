@@ -7,7 +7,7 @@ body {
 
 h1 {
     text-align: center;
-    color: #007bff; /* Header color */
+    color: #007bff;
     margin-bottom: 20px;
 }
 
@@ -17,69 +17,69 @@ h1 {
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 600px;
-    margin: 20px auto; /* Centering with margin */
+    margin: 20px auto;
 }
 
 ul {
-    list-style-type: none; /* Remove bullet points */
+    list-style-type: none;
     padding: 0;
 }
 
 li {
     padding: 10px;
-    border-bottom: 1px solid #ddd; /* Separator line */
-    transition: background-color 0.2s; /* Smooth transition for hover */
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s;
 }
 
 li:hover {
-    background-color: #f0f0f0; /* Light gray on hover */
+    background-color: #f0f0f0;
 }
 
 li:last-child {
-    border-bottom: none; /* Remove bottom border from last item */
+    border-bottom: none;
 }
 
 .button-container {
-    display: flex; /* Use flexbox */
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px; /* Space above the container */
+    margin-top: 20px;
 }
 
 button {
-    margin: 10px; /* Space above and below buttons */
-    background-color: #007bff; /* Bootstrap primary color */
+    margin: 10px;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 50px;
     padding: 10px 20px;
     font-size: 1.1rem;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-    transform: scale(1.05); /* Slightly grow on hover */
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 button:focus {
-    outline: none; /* Remove default outline */
+    outline: none;
 }
 
 input[type="file"] {
-    padding: 10px; /* Add padding for better touch target */
+    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-top: 10px;
-    display: block; /* Ensure it appears on a new line */
-    width: calc(100% - 20px); /* Full width minus padding */
-    max-width: 600px; /* Limit maximum width */
-    margin: 10px auto; /* Center it */
+    display: block;
+    width: calc(100% - 20px);
+    max-width: 600px;
+    margin: 10px auto;
 }
 
 p {
     text-align: center;
     font-size: 0.9rem;
-    color: #666; /* Slightly darker gray for better readability */
+    color: #666;
 }
