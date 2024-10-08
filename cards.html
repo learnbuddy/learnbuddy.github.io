@@ -10,6 +10,18 @@
 
     <h1>Stored Cards</h1>
     <div id="cards"></div>
+
+    <h1>Download Card Pack</h1>
+    <div class="button-container">
+        <button onclick="DownloadCards()">Download .JSON</button>
+    </div>
+
+    <h1>Upload Card Pack</h1>
+    <p>Please never upload any files from untrusted sources as it could be a potential risk to your computer.</p>
+    <input type="file" name="file" id="file">
+    <div class="button-container">
+        <button onclick="UploadCards()">Upload .JSON</button>
+    </div>
 </body>
 
 <script>
@@ -32,6 +44,68 @@
         }
 
         cardsDiv.appendChild(ul);
+    }
+
+    function DownloadCards() {
+        var Cards = {};
+
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            Cards[key] = value;
+        }
+
+        var card_collection =  JSON.stringify(Cards);
+        var a = document.createElement("a");
+        document.body.appendChild(a);
+        a.style = "display: none";
+        downloadFile = new Blob([card_collection], {type: 'text/plain'});
+        var downloadURL = window.URL.createObjectURL(downloadFile);
+        a.href = downloadURL;
+        a.download = 'card-stack.json';
+        a.click();
+        window.URL.revokeObjectURL(downloadURL);
+    }
+
+    function UploadCards() {
+        const fileInput = document.getElementById('file');
+        const file = fileInput.files[0];
+
+        const fileExtension = file.name.split('.').pop().toLowerCase();
+        if (fileExtension !== 'json') {
+            alert("Please upload a valid .JSON file.");
+            return;
+        }
+
+        if (file.size > 1000000) { // 1 MB limit
+            alert("File is too large! Maximum of 1 MB");
+            return;
+        }
+
+        if (!file) {
+            alert("Please select a valid .JSON file before uploading.")
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            try {
+                const fileContent = event.target.result;
+                const cards = JSON.parse(fileContent);
+
+                Object.keys(cards).forEach(key => {
+                    localStorage.setItem(key, cards[key]);
+                });
+                alert("Done uploading ");
+                loadCards()
+            } catch(error) {
+                console.error(error);
+                alert("Something went wrong :(");
+            }
+        };
+
+        reader.readAsText(file);
     }
     </script>
 
