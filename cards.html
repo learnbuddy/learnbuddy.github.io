@@ -59,7 +59,7 @@
         var a = document.createElement("a");
         document.body.appendChild(a);
         a.style = "display: none";
-        downloadFile = new Blob([card_collection], {type: 'text/plain'});
+        downloadFile = new Blob([card_collection], {type: 'application/json'});
         var downloadURL = window.URL.createObjectURL(downloadFile);
         a.href = downloadURL;
         a.download = 'card-stack.json';
