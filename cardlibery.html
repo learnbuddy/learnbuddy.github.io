@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnBuddy</title>
+    <link rel="stylesheet" href="libery.css">
+</head>
+<body>
+    <div class="pack">
+        <h1>Square numbers</h1>
+        <p>All the square numbers from 1 to 20 for you to practise</p>
+        <button onclick="loadCardPack('card_libery_data/squarenumbers.json')">Load pack</button>
+    </div>
+    <script>
+        function loadCardPack(filePath) {
+            alert("Doing this will delete your current flash cards.");
+            localStorage.clear();
+
+            fetch(filePath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Something went wrong');
+                }
+                return response.json();
+            })
+            .then(cards => {
+                Object.keys(cards).forEach(key => {
+                    localStorage.setItem(key, cards[key]);
+                });
+
+                alert("Done! Flash cards loaded successfully.");
+            })
+            .catch(error => {
+                console.error('Error loading flash cards:', error);
+                alert("Something went wrong :(");
+            });
+        }
+    </script>
+</body>
+</html>
